@@ -1,0 +1,336 @@
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f1cdcd 0%, #f1cdcd 100%);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.app__header {
+  background: #ea66a8;
+  color: white;
+  padding: 25px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app__header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.app__brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.app__title {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.app__subtitle {
+  margin: 5px 0 0 0;
+  font-size: 1rem;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.app__cart-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.app__cart-count,
+.app__cart-total {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.app__clear-cart {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 5px;
+}
+
+.app__clear-cart:hover {
+  background: #ff5252;
+  transform: translateY(-2px);
+}
+
+.app__main {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  width: 100%;
+}
+
+.app__section {
+  margin-bottom: 60px;
+  
+}
+
+.app__section-title {
+  margin: 0 0 30px 0;
+  font-size: 2rem;
+  color: #2d3436;
+  text-align: center;
+  font-weight: 600;
+  position: relative;
+}
+
+.app__section-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+.app__featured-product {
+  display: flex;
+  justify-content: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.app__featured-card {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.app__no-product {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 2px dashed #ddd;
+}
+
+.app__no-product p {
+  margin: 0 0 10px 0;
+  color: #636e72;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.app__no-product small {
+  color: #b2bec3;
+  font-size: 0.9rem;
+}
+
+/* Стили для фильтров */
+.app__filters {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.app__filters-title {
+  margin: 0 0 20px 0;
+  color: #2d3436;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.app__filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.app__filter-btn {
+  background: #f8f9fa;
+  color: #2d3436;
+  border: 2px solid #e9ecef;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.app__filter-btn:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+}
+
+.app__filter-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+}
+
+.app__catalog {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.app__variants {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.app__variant {
+  text-align: center;
+}
+
+.app__variant h3 {
+  margin: 0 0 15px 0;
+  color: #2d3436;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.app__footer {
+  background: linear-gradient(#ea66a8);
+  color: white;
+  padding: 30px 0;
+  margin-top: auto;
+}
+
+.app__footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.app__footer-links {
+  display: flex;
+  gap: 25px;
+}
+
+.app__footer-links a {
+  color: white;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.app__footer-links a:hover {
+  opacity: 0.8;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .app__header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))
+  }
+
+  .app__cart-info {
+    align-items: center;
+  }
+
+  .app__title {
+    font-size: 1.8rem;
+  }
+
+  .app__main {
+    padding: 20px 15px;
+  }
+
+  .app__section {
+    margin-bottom: 40px;
+  }
+
+  .app__section-title {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+
+  .app__variants {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .app__catalog {
+    padding: 15px;
+  }
+
+  .app__filter-buttons {
+    gap: 10px;
+  }
+
+  .app__filter-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .app__footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .app__footer-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .app__header {
+    padding: 20px 0;
+  }
+
+  .app__header-content {
+    padding: 0 15px;
+  }
+
+  .app__main {
+    padding: 15px 10px;
+  }
+
+  .app__section-title {
+    font-size: 1.4rem;
+  }
+
+  .app__filter-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .app__filter-btn {
+    width: 200px;
+  }
+}

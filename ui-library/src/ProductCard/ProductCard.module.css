@@ -1,0 +1,123 @@
+.productCard {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgb(255, 255, 255);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  width: 500px; /* Добавляем ограничение по ширине */
+  margin: 0 auto; /* Центрируем карточку */
+  justify-content: center;
+  align-items: center;
+}
+
+.productCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.productImage {
+  width: 300px;
+  height: 300px; /* Увеличиваем высоту изображения */
+  object-fit: cover;
+  display: block;
+
+}
+
+.overlay {
+  display: none;
+}
+
+.content {
+  position: static; /* Убираем абсолютное позиционирование */
+  padding: 16px;
+  color: #333; /* Меняем цвет текста на темный для белого фона */
+  background: white;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Варианты позиционирования текста */
+.text-left .content {
+  text-align: left;
+}
+
+.text-center .content {
+  text-align: center;
+}
+
+.text-right .content {
+  text-align: right;
+}
+
+.title {
+  margin: 0 0 10px 0;
+  font-size: 1.3rem; /* Увеличиваем размер заголовка */
+  font-weight: 600;
+  line-height: 1.3;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.description {
+  margin: 0 0 14px 0;
+  font-size: 1rem; /* Увеличиваем размер описания */
+  line-height: 1.4;
+  opacity: 0.9;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.price {
+  font-size: 1.4rem; /* Увеличиваем размер цены */
+  font-weight: 700;
+  margin-bottom: 14px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.buttons {
+  display: flex;
+  gap: 10px; /* Увеличиваем расстояние между кнопками */
+  flex-wrap: wrap;
+}
+
+.detailsButton {
+  background: rgba(238, 84, 169, 0.9);
+  color: white;
+  border: none;
+  padding: 10px 18px; /* Увеличиваем кнопки */
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  flex: 1;
+  min-width: 130px; /* Увеличиваем минимальную ширину */
+}
+
+.detailsButton:hover {
+  background: #f157b6;
+  transform: translateY(-1px);
+}
+
+.cartButton {
+  background: rgba(238, 84, 169, 0.9);
+  color: white;
+  border: none;
+  padding: 10px 18px; 
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  flex: 1;
+  min-width: 110px; /* Увеличиваем минимальную ширину */
+}
+
+.cartButton:hover {
+  background: #d452b4;
+  transform: translateY(-1px);
+}
+
