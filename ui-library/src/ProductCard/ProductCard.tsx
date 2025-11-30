@@ -120,7 +120,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           >
             {buttonText}
           </button>
-
+  
           {/* Кнопка "Добавить в корзину" (условный рендеринг) */}
           {showAddToCart && (
             <button 
