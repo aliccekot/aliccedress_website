@@ -3,6 +3,8 @@ import './App.css'
 import '@my-app/ui-library/style.css'
 import { ProductCard, Catalog } from '@my-app/ui-library'
 import type { Product } from '@my-app/ui-library'
+
+// Импорт изображений товаров
 import photo1 from './assets/dress.jpg'
 import photo2 from './assets/jacket.jpg'
 import photo3 from './assets/skirt.jpg'
@@ -13,8 +15,8 @@ import photo6 from './assets/evening_dress.jpg'
 // База данных товаров для магазина одежды с ценами в рублях
 const clothingProducts: Product[] = [
   {
-    id: 1,
-    imageUrl: photo1 ,
+    id: 1, 
+    imageUrl: photo1,
     title: 'Летнее платье',
     description: 'Легкое хлопковое платье с цветочным принтом, идеально для жарких дней',
     price: 4599
@@ -54,7 +56,6 @@ const clothingProducts: Product[] = [
     description: 'Элегантное вечернее платье с открытыми плечами и струящимся силуэтом',
     price: 12999
   },
-  
 ]
 
 // Функция для форматирования цены в русский формат
@@ -63,21 +64,22 @@ const formatPrice = (price: number) => {
 }
 
 const App: React.FC = () => {
+  // Состояние корзины - массив ID товаров
   const [cart, setCart] = useState<number[]>([])
+  // Состояние выбранного товара для детального просмотра
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
-  
-
-
 
   // Обработчик добавления в корзину для каталога
   const handleAddToCart = (productId: string | number) => {
     const id = Number(productId)
     setCart(prev => {
+      // Добавляем товар в корзину, если его там еще нет
       if (!prev.includes(id)) {
         return [...prev, id]
       }
       return prev
     })
+    // Находим товар по ID и показываем уведомление
     const product = clothingProducts.find(p => p.id === id)
     alert(`"${product?.title}" добавлен в корзину!`)
   }
@@ -89,7 +91,7 @@ const App: React.FC = () => {
     }
   }
 
-  // Обработчик клика по товару
+  // Обработчик клика по товару - устанавливает выбранный товар
   const handleProductClick = (productId: string | number) => {
     const product = clothingProducts.find(p => p.id === productId)
     if (product) {
@@ -125,6 +127,7 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
+      {/* Шапка приложения */}
       <header className="app__header">
         <div className="app__header-content">
           <div className="app__brand">
@@ -132,8 +135,10 @@ const App: React.FC = () => {
             <p className="app__subtitle">Стильная одежда для каждого сезона</p>
           </div>
           <div className="app__cart-info">
+            {/* Информация о корзине */}
             <span className="app__cart-count">Товаров в корзине: {getCartItemsCount()}</span>
             <span className="app__cart-total">Общая сумма: {formatPrice(getCartTotal())} ₽</span>
+            {/* Кнопка очистки корзины показывается только если в корзине есть товары */}
             {cart.length > 0 && (
               <button className="app__clear-cart" onClick={clearCart}>
                 Очистить корзину
@@ -143,17 +148,18 @@ const App: React.FC = () => {
         </div>
       </header>
 
+      {/* Основное содержимое приложения */}
       <main className="app__main">
         {/* Секция с одиночной карточкой товара */}
         <section className="app__section">
           <h2 className="app__section-title">Выбранный товар</h2>
           <div className="app__featured-product">
             {selectedProduct ? (
+              // Показываем увеличенную карточку выбранного товара
               <ProductCard
                 id={selectedProduct.id}
                 imageUrl={selectedProduct.imageUrl}
                 title={selectedProduct.title}
-               
                 price={`${formatPrice(selectedProduct.price as number)} ₽`}
                 textPosition="center"
                 buttonText="Подробнее о товаре"
@@ -163,6 +169,7 @@ const App: React.FC = () => {
                 className="app__featured-card"
               />
             ) : (
+              // Сообщение если товар не выбран
               <div className="app__no-product">
                 <p>Выберите товар из каталога для просмотра</p>
                 <small>Нажмите на любой товар ниже</small>
@@ -171,28 +178,27 @@ const App: React.FC = () => {
           </div>
         </section>
 
-
-
         {/* Секция с каталогом товаров */}
-<section className="app__section">
-  <h2 className="app__section-title">Каталог одежды</h2>
-  <div className="app__catalog">
-    <Catalog
-      products={clothingProducts.map(product => ({
-        ...product,
-        price: `${formatPrice(product.price as number)} ₽`
-      }))}
-      onProductClick={handleProductClick}
-      onAddToCart={handleAddToCart}
-      textPosition="left"
-      showAddToCart={true}
-      className="app__catalog-grid"
-    />
-  </div>
-</section>
-        
+        <section className="app__section">
+          <h2 className="app__section-title">Каталог одежды</h2>
+          <div className="app__catalog">
+            <Catalog
+              // Преобразуем цены товаров в отформатированный вид с символом рубля
+              products={clothingProducts.map(product => ({
+                ...product,
+                price: `${formatPrice(product.price as number)} ₽`
+              }))}
+              onProductClick={handleProductClick}
+              onAddToCart={handleAddToCart}
+              textPosition="left"
+              showAddToCart={true}
+              className="app__catalog-grid"
+            />
+          </div>
+        </section>
       </main>
 
+      {/* Подвал приложения */}
       <footer className="app__footer">
         <div className="app__footer-content">
           <p>&copy; 2025 aliccedress. Все права защищены.</p>
