@@ -1,0 +1,220 @@
+.catalog {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box; /* Важно для правильного расчета ширины */
+}
+
+.grid {
+  display: grid;
+  gap: 24px;
+  width: 100%;
+  /* Адаптивная grid-сетка */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.gridItem {
+  display: flex;
+}
+
+.productCard {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgb(252, 85, 140);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* Гарантируем, что карточка будет адаптивной */
+  min-height: 350px; /* Минимальная высота для консистентности */
+}
+
+.productCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.productImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 30%,
+    rgba(255, 255, 255, 0.1) 70%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  pointer-events: none;
+}
+
+.content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  color: rgb(253, 215, 215);
+  z-index: 2;
+}
+
+/* Варианты позиционирования текста */
+.text-left .content {
+  text-align: left;
+}
+
+.text-center .content {
+  text-align: center;
+}
+
+.text-right .content {
+  text-align: right;
+}
+
+.title {
+  margin: 0 0 8px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.description {
+  margin: 0 0 12px 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  opacity: 0.9;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.detailsButton {
+  background: rgba(255, 255, 255, 0.9);
+  color: #df31a5;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  flex: 1;
+  min-width: 120px;
+}
+
+.detailsButton:hover {
+  background: #f157b6;
+  transform: translateY(-1px);
+}
+
+.cartButton {
+  background:  rgba(255, 255, 255, 0.9);
+  color: #df31a5;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  flex: 1;
+  min-width: 100px;
+}
+
+.cartButton:hover {
+  background: #f157b6;
+  transform: translateY(-1px);
+}
+
+/* Адаптивность - улучшенная версия */
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .catalog {
+    padding: 16px;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  
+  .productImage {
+    height: 180px;
+  }
+  
+  .content {
+    padding: 12px;
+  }
+  
+  .title {
+    font-size: 1.1rem;
+  }
+  
+  .buttons {
+    flex-direction: column;
+  }
+  
+  .detailsButton,
+  .cartButton {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .catalog {
+    padding: 12px;
+  }
+  
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  
+  .productImage {
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr; /* одна колонка на очень маленьких экранах */
+    gap: 10px;
+  }
+  
+  .productCard {
+    min-height: 300px;
+  }
+}
