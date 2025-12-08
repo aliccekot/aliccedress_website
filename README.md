@@ -37,7 +37,7 @@ aliccedress_website
 
 ## Технологии
 
-- **Frontend**: React 19 + TypeScript
+- **Frontend**: React 19.2.0 + TypeScript
 - **Сборка**: Vite
 - **Тестирование**: Jest + React Testing Library
 - **Стилизация**: CSS Modules
