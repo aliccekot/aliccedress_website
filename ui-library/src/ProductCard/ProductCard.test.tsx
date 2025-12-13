@@ -1,4 +1,3 @@
-// src/ProductCard/ProductCard.test.tsx
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
@@ -6,7 +5,6 @@ import { ProductCard } from './ProductCard'
 
 import type { ProductCardProps } from './ProductCard'
 
-// Mock CSS modules
 jest.mock('./ProductCard.module.css', () => ({
   productCard: 'productCard',
   productImage: 'productImage',

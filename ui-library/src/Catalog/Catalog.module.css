@@ -1,14 +1,13 @@
 .catalog {
   width: 100%;
   padding: 20px;
-  box-sizing: border-box; /* Важно для правильного расчета ширины */
+  box-sizing: border-box; 
 }
 
 .grid {
   display: grid;
   gap: 24px;
   width: 100%;
-  /* Адаптивная grid-сетка */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
@@ -26,8 +25,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* Гарантируем, что карточка будет адаптивной */
-  min-height: 350px; /* Минимальная высота для консистентности */
+  min-height: 350px; 
 }
 
 .productCard:hover {
@@ -68,7 +66,7 @@
   z-index: 2;
 }
 
-/* Варианты позиционирования текста */
+
 .text-left .content {
   text-align: left;
 }
@@ -146,7 +144,7 @@
   transform: translateY(-1px);
 }
 
-/* Адаптивность - улучшенная версия */
+
 @media (max-width: 1200px) {
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -210,7 +208,7 @@
 
 @media (max-width: 480px) {
   .grid {
-    grid-template-columns: 1fr; /* одна колонка на очень маленьких экранах */
+    grid-template-columns: 1fr; 
     gap: 10px;
   }
   

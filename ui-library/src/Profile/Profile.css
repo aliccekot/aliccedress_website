@@ -1,0 +1,254 @@
+.profile {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.profile__placeholder {
+  border: 3px dashed #ea66a8;
+  border-radius: 16px;
+  padding: 40px 30px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 30px rgba(234, 102, 168, 0.2);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.profile__placeholder:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(234, 102, 168, 0.25);
+  border-color: #d452b4;
+}
+
+.profile__icon {
+  font-size: 72px;
+  margin-bottom: 20px;
+  color: #ea66a8;
+  animation: gentlePulse 3s ease-in-out infinite;
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+.profile__title {
+  margin: 0 0 15px 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #2d3436;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.profile__title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #ea66a8, #ff8a8a);
+  border-radius: 2px;
+}
+
+.profile__description {
+  margin: 0 0 30px 0;
+  font-size: 18px;
+  color: #636e72;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.profile__info {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 30px;
+  border: 2px solid #e9ecef;
+  text-align: left;
+}
+
+.profile__info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px dashed #dee2e6;
+}
+
+.profile__info-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.profile__info-label {
+  font-weight: 600;
+  color: #495057;
+  font-size: 16px;
+  min-width: 100px;
+  text-align: left;
+}
+
+.profile__info-value {
+  color: #2d3436;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: right;
+  flex: 1;
+  padding-left: 15px;
+}
+
+.profile__actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.profile__button {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 160px;
+  letter-spacing: 0.5px;
+}
+
+.profile__button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.profile__button:active {
+  transform: translateY(-1px);
+}
+
+.profile__button--edit {
+  background: #ea66a8;
+  color: white;
+  border: none;
+}
+
+.profile__button--edit:hover {
+  background: #d452b4;
+  color: white;
+  box-shadow: 0 10px 25px rgba(234, 102, 168, 0.3);
+}
+
+.profile__button--logout {
+  background: transparent;
+  color: #ea66a8;
+  border: 3px solid #ea66a8;
+}
+
+.profile__button--logout:hover {
+  background: #ea66a8;
+  color: white;
+  box-shadow: 0 10px 25px rgba(234, 102, 168, 0.3);
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+  .profile__placeholder {
+    padding: 30px 20px;
+    margin: 0 15px;
+  }
+  
+  .profile__icon {
+    font-size: 60px;
+  }
+  
+  .profile__title {
+    font-size: 24px;
+  }
+  
+  .profile__description {
+    font-size: 16px;
+  }
+  
+  .profile__info {
+    padding: 20px;
+  }
+  
+  .profile__info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .profile__info-label,
+  .profile__info-value {
+    text-align: left;
+    width: 100%;
+  }
+  
+  .profile__info-label {
+    min-width: auto;
+    font-size: 14px;
+    color: #6c757d;
+  }
+  
+  .profile__info-value {
+    padding-left: 0;
+    font-size: 15px;
+  }
+  
+  .profile__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .profile__button {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .profile__notice {
+    font-size: 14px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile__placeholder {
+    padding: 25px 15px;
+  }
+  
+  .profile__icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+  }
+  
+  .profile__title {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  
+  .profile__description {
+    font-size: 15px;
+    margin-bottom: 25px;
+  }
+  
+  .profile__info {
+    padding: 15px;
+  }
+  
+  .profile__button {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+}
