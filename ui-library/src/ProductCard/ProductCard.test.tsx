@@ -2,6 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { ProductCard } from './ProductCard'
+
 import type { ProductCardProps } from './ProductCard'
 
 jest.mock('./ProductCard.module.css', () => ({
@@ -48,6 +49,7 @@ describe('ProductCard', () => {
     expect(screen.getByText('$99.99')).toBeInTheDocument()
     
     const image = screen.getByAltText('Test Product Image')
+
     expect(image).toHaveAttribute('src', 'https://example.com/image.jpg')
   })
 
@@ -113,6 +115,7 @@ describe('ProductCard', () => {
     render(<ProductCard {...propsWithoutAlt} />)
 
     const image = screen.getByAltText('Test Product')
+
     expect(image).toBeInTheDocument()
   })
 
@@ -120,6 +123,7 @@ describe('ProductCard', () => {
     render(<ProductCard {...defaultProps} />)
 
     const image = screen.getByAltText('Test Product Image')
+    
     expect(image).toBeInTheDocument()
   })
 
@@ -129,6 +133,7 @@ describe('ProductCard', () => {
     render(<ProductCard {...propsWithClassName} />)
 
     const card = screen.getByText('Test Product').closest('.productCard')
+
     expect(card).toHaveClass('custom-class')
   })
 
@@ -170,6 +175,7 @@ describe('ProductCard', () => {
     render(<ProductCard {...propsWithoutTextPosition} />)
 
     const card = screen.getByText('Test Product').closest('.productCard')
+
     expect(card).toHaveClass('text-left')
   })
 
@@ -177,6 +183,7 @@ describe('ProductCard', () => {
     render(<ProductCard {...defaultProps} />)
 
     const card = screen.getByText('Test Product').closest('.productCard')
+
     expect(card).toHaveClass('text-left')
   })
 
@@ -186,6 +193,7 @@ describe('ProductCard', () => {
     render(<ProductCard {...propsWithCenterText} />)
 
     const card = screen.getByText('Test Product').closest('.productCard')
+
     expect(card).toHaveClass('text-center')
   })
 
@@ -195,6 +203,7 @@ describe('ProductCard', () => {
     render(<ProductCard {...propsWithRightText} />)
 
     const card = screen.getByText('Test Product').closest('.productCard')
+
     expect(card).toHaveClass('text-right')
   })
 
@@ -202,6 +211,7 @@ describe('ProductCard', () => {
     render(<ProductCard {...defaultProps} />)
 
     const card = screen.getByText('Test Product').closest('.productCard')
+
     fireEvent.click(card!)
 
     expect(defaultProps.onButtonClick).toHaveBeenCalledTimes(1)
@@ -213,6 +223,7 @@ describe('ProductCard', () => {
     render(<ProductCard {...defaultProps} />)
 
     const card = screen.getByText('Test Product').closest('.productCard')
+
     fireEvent.click(card!)
 
     expect(defaultProps.onButtonClick).toHaveBeenCalledTimes(1)
@@ -306,6 +317,7 @@ describe('ProductCard', () => {
     render(<ProductCard {...propsWithClassName} />)
 
     const card = screen.getByText('Test Product').closest('.productCard')
+
     expect(card).toHaveClass('custom-class')
     expect(card).toHaveClass('another-class')
   })
@@ -324,6 +336,7 @@ describe('ProductCard', () => {
     expect(screen.getByText('100')).toBeInTheDocument()
     
     const image = screen.getByAltText('Required Title')
+
     expect(image).toBeInTheDocument()
   })
 
@@ -353,6 +366,7 @@ describe('ProductCard', () => {
     render(<ProductCard {...propsWithEmptyStrings} />)
 
     const image = screen.getByAltText('')
+
     expect(image).toBeInTheDocument()
   })
 
@@ -365,6 +379,7 @@ describe('ProductCard', () => {
     render(<ProductCard {...propsWithSpaces} />)
 
     const card = screen.getByText('Test Product').closest('.productCard')
+
     expect(card).toHaveClass('custom-class')
   })
 
@@ -397,6 +412,7 @@ describe('ProductCard', () => {
 
     // Поскольку нет detailsButton, просто проверяем клик по карточке
     const card = screen.getByText('Test Product').closest('.productCard')
+
     fireEvent.click(card!)
     expect(mockOnButtonClick).toHaveBeenCalledTimes(1)
   })
@@ -405,6 +421,7 @@ describe('ProductCard', () => {
     render(<ProductCard {...defaultProps} />)
 
     const overlay = document.querySelector('.overlay')
+
     expect(overlay).toBeInTheDocument()
   })
 
@@ -412,6 +429,7 @@ describe('ProductCard', () => {
     render(<ProductCard {...defaultProps} />)
 
     const content = document.querySelector('.content')
+
     expect(content).toBeInTheDocument()
   })
 
@@ -419,6 +437,7 @@ describe('ProductCard', () => {
     render(<ProductCard {...defaultProps} />)
 
     const buttons = document.querySelector('.buttons')
+
     expect(buttons).toBeInTheDocument()
   })
 
@@ -428,6 +447,7 @@ describe('ProductCard', () => {
     // В вашем компоненте НЕТ detailsButton, поэтому этот тест должен быть удален или изменен
     // Проверяем что контейнер buttons существует
     const buttons = document.querySelector('.buttons')
+
     expect(buttons).toBeInTheDocument()
   })
 
@@ -456,6 +476,7 @@ describe('ProductCard', () => {
 
     // Используем querySelector для поиска элемента price
     const priceElement = document.querySelector('.price')
+
     expect(priceElement).toBeInTheDocument()
     expect(priceElement?.textContent).toBe('')
   })
@@ -472,6 +493,7 @@ describe('ProductCard', () => {
     render(<ProductCard {...props} />)
 
     const card = screen.getByText('Test Product').closest('.productCard')
+
     expect(() => {
       fireEvent.click(card!)
     }).not.toThrow()
@@ -488,6 +510,7 @@ describe('ProductCard', () => {
 
     // Поскольку нет detailsButton, проверяем клик по карточке
     const card = screen.getByText('Test Product').closest('.productCard')
+
     fireEvent.click(card!)
     expect(mockOnButtonClick).toHaveBeenCalledTimes(1)
   })
