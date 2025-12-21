@@ -97,14 +97,11 @@ const CatalogPage: React.FC<CatalogPageProps> = ({
   const handleAddToCart = (productId: string | number) => {
     const id = Number(productId)
 
-    if (onAddToCart) 
-
-    {
+    if (onAddToCart) {
       onAddToCart(id)
-    } 
-    else {
+    } else {
       const product = clothingProducts.find(p => p.id === id)
-      
+
       alert(`"${product?.title}" добавлен в корзину!`)
     }
   }
@@ -128,8 +125,7 @@ const CatalogPage: React.FC<CatalogPageProps> = ({
   }
 
   return (
-    <div className="app">
-
+    <div className="app catalog-page">
       <div className="page-header">
         <div className="page-header__content">
           {onBack && (
@@ -138,29 +134,40 @@ const CatalogPage: React.FC<CatalogPageProps> = ({
             </button>
           )}
           <h1 className="page-header__title">Каталог</h1>
+          <p className="page-header__subtitle">Выберите товар, который вам понравился</p>
         </div>
       </div>
 
       <main className="app__main">
-       
         <section className="app__section">
-          <div className="app__catalog">
-            <Catalog
-              products={clothingProducts.map(product => ({
-                ...product,
-                price: `${(product.price as number)} ₽`
-              }))}
-              onProductClick={handleDetailsClick}
-              onAddToCart={handleAddToCart}
-              textPosition="left"
-              showAddToCart={true}
-              className="app__catalog-grid"
-            />
+          <div className="app__catalog-container">
+            <div className="catalog-page__info">
+            
+            </div>
+            
+            <div className="app__catalog">
+              <Catalog
+                products={clothingProducts.map(product => ({
+                  ...product,
+                  price: `${(product.price as number).toLocaleString('ru-RU')} `
+                }))}
+                onProductClick={handleDetailsClick}
+                onAddToCart={handleAddToCart}
+                textPosition="left"
+                showAddToCart={true}
+              />
+            </div>
+
+            <div className="catalog-page__actions">
+              <button className="app__view-all-btn" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                ↑ Наверх
+              </button>
+
+            </div>
           </div>
         </section>
       </main>
 
-      {/* Подвал страницы */}
       <footer className="app__footer">
         <div className="app__footer-content">
           <p>&copy; 2025 aliccedress. Все права защищены.</p>

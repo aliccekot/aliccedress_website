@@ -160,9 +160,10 @@ const formatPrice = (price: number) => {
 interface ProductCardPageProps {
   productId?: string
   onBack?: () => void
+  onAddToCart?: (productId: number) => void
 }
 
-const ProductCardPage: React.FC<ProductCardPageProps> = ({ productId, onBack }) => {
+const ProductCardPage: React.FC<ProductCardPageProps> = ({ productId, onBack, onAddToCart }) => {
   const [selectedProduct, setSelectedProduct] = useState<ClothingProduct | null>(null)
 
   useEffect(() => {
@@ -173,14 +174,14 @@ const ProductCardPage: React.FC<ProductCardPageProps> = ({ productId, onBack }) 
     }
   }, [productId])
 
-  // Обработчик добавления в корзину
   const handleAddToCart = () => {
-    if (selectedProduct) {
+    if (selectedProduct && onAddToCart) {
+      onAddToCart(selectedProduct.id)
+    } else if (selectedProduct) {
       alert(`"${selectedProduct.title}" добавлен в корзину!`)
     }
   }
 
-  // Обработчик клика по кнопке "Назад"
   const handleBackClick = () => {
     if (onBack) {
       onBack()
@@ -212,7 +213,6 @@ const ProductCardPage: React.FC<ProductCardPageProps> = ({ productId, onBack }) 
 
   return (
     <div className="product-card-page">
-      {/* Шапка страницы */}
       <div className="product-card-page__header">
         <div className="product-card-page__header-content">
           <button className="product-card-page__back-btn" onClick={handleBackClick}>
@@ -222,27 +222,22 @@ const ProductCardPage: React.FC<ProductCardPageProps> = ({ productId, onBack }) 
         </div>
       </div>
 
-      {/* Основной контент */}
       <main className="product-card-page__main">
         <div className="product-card-page__grid">
-          {/* Карточка товара */}
           <div className="product-card-page__card-section">
             <ProductCard
               id={selectedProduct.id}
               imageUrl={selectedProduct.imageUrl}
               title={selectedProduct.title}
               description={selectedProduct.description}
-              price={`${formatPrice(selectedProduct.price)} ₽`}
+              price={`${formatPrice(selectedProduct.price)}`}
               textPosition="center"
-              buttonText="Добавить в корзину"
               onButtonClick={handleAddToCart}
-              onAddToCart={handleAddToCart}
               showAddToCart={true}
               className="product-card-page__featured-card"
             />
           </div>
 
-          {/* Детальная информация */}
           <div className="product-card-page__details">
             <h2 className="product-card-page__details-title">Детальная информация</h2>
             
@@ -264,14 +259,19 @@ const ProductCardPage: React.FC<ProductCardPageProps> = ({ productId, onBack }) 
                 <span className="product-card-page__detail-value">{selectedProduct.details.care}</span>
               </div>
             </div>
+            
             <div className="product-card-page__actions">
-
+              <button
+                className="btn btn-primary"
+                onClick={handleAddToCart}
+              >
+                Добавить в корзину
+              </button>
             </div>
           </div>
         </div>
       </main>
 
-      {/* Подвал страницы (используем тот же подвал что и везде) */}
       <footer className="app__footer">
         <div className="app__footer-content">
           <p>&copy; 2025 aliccedress. Все права защищены.</p>
