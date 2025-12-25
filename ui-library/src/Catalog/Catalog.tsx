@@ -63,7 +63,6 @@ export const Catalog: React.FC<CatalogProps> = ({
             className={styles.gridItem}
             onClick={() => handleProductClick(product.id)} 
           >
-
             <div className={styles.productCard}>
               <img
                 src={product.imageUrl}
@@ -83,7 +82,6 @@ export const Catalog: React.FC<CatalogProps> = ({
                 <div className={styles.price}>{product.price}</div>
 
                 <div className={styles.buttons}>
-
                   <button 
                     className={styles.detailsButton}
                     onClick={(e) => {

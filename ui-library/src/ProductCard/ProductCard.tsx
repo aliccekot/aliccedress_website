@@ -25,7 +25,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   description,
   price,
   textPosition = 'left',         
-  buttonText = 'Узнать подробнее', 
   onButtonClick,
   alt,
   className = '',                 
@@ -66,16 +65,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
         <div className={styles.buttons}>
 
-          <button 
-            className={styles.detailsButton}
-            onClick={(e) => {
-              e.stopPropagation() 
-              if (onButtonClick) onButtonClick()
-            }}
-          >
-            {buttonText}
-          </button>
-  
         </div>
       </div>
     </div>

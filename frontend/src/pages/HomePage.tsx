@@ -12,13 +12,13 @@ interface HomePageProps {
   onProductSelect: (productId: number) => void;
   onAddToCart: (productId: number) => void;
   onNavigateToCatalog: () => void;
-  products: Product[]; // Добавляем пропс
+  products: Product[]; 
 }
 
 const HomePage: React.FC<HomePageProps> = ({ 
   onProductSelect, 
   onAddToCart,
-  products // Получаем данные
+  products 
 }) => {
   const [cart, setCart] = useState<number[]>([])
 
@@ -46,7 +46,6 @@ const HomePage: React.FC<HomePageProps> = ({
 
   return (
     <div className="app">
-      {/* Информация о корзине */}
       <div className="app__cart-summary">
         <div className="app__cart-summary-content">
 
@@ -59,14 +58,12 @@ const HomePage: React.FC<HomePageProps> = ({
       </div>
 
       <main className="app__main">
-        {/* Секция с приветствием */}
         <section className="app__section">
           <div className="app__welcome">
             <h2 className="app__welcome-title">aliccedress - стильная одежда для каждого сезона</h2>
           </div>
         </section>
 
-        {/* Секция LookBook */}
         <section className="app__section">
           <h2 className="app__section-title">LookBook</h2>
           <div className="lookbook">
@@ -84,26 +81,26 @@ const HomePage: React.FC<HomePageProps> = ({
           </div>
         </section>
 
-        {/* Секция с избранными товарами */}
         <section className="app__section">
           <h2 className="app__section-title">Bestsellers</h2>
           <div className="app__catalog">
-            <Catalog
-              products={products.slice(0, 3).map(product => ({
-                ...product,
-                price: `${(product.price as number)} ₽`
-              }))}
-              onProductClick={handleDetailsClick}
-              onAddToCart={handleAddToCart}
-              textPosition="left"
-              showAddToCart={true}
-              className="app__catalog-grid"
-            />
+
           </div>
         </section>
+
+        <Catalog
+          products={products.slice(0, 3).map(product => ({
+            ...product,
+            price: `${(product.price as number)}`
+          }))}
+          onProductClick={handleDetailsClick}
+          onAddToCart={handleAddToCart}
+          textPosition="left"
+          showAddToCart={true}
+        />
+
       </main>
 
-      {/* Подвал приложения */}
       <footer className="app__footer">
         <div className="app__footer-content">
           <p>&copy; 2025 aliccedress. Все права защищены.</p>

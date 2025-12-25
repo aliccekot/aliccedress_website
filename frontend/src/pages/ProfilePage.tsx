@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { Profile } from '@my-app/ui-library'
 
-// Тип для данных пользователя
 interface UserData {
   name: string
   email: string
@@ -11,42 +10,23 @@ interface UserData {
 
 const ProfilePage: React.FC<{
   onBack: () => void;
-}> = ({ onBack }) => {
-  const [isEditing, setIsEditing] = useState(false)
-  const [userData] = useState<UserData>({
-    name: 'Алиса Котова',
-    email: 'alicekot@gmail.com',
-    phone: '+7 (999) 123-45-67',
-  })
-
-  const handleEdit = () => {
-    setIsEditing(!isEditing)
-  }
-
-  const handleSave = (data: Record<string, unknown>) => {
-  // Проверяем, что данные соответствуют UserData
-    if (
-      data.name && 
-    data.email && 
-    data.phone &&
-    typeof data.name === 'string' &&
-    typeof data.email === 'string' &&
-    typeof data.phone === 'string'
-    ) {
-    // Теперь TypeScript знает, что это UserData
-      const userData: UserData = {
-        name: data.name,
-        email: data.email,
-        phone: data.phone
-      }
-    
-      alert(`Данные профиля сохранены!\n\nИмя: ${userData.name}\nEmail: ${userData.email}\nТелефон: ${userData.phone}`)
-      setIsEditing(false)
-    } else {
-      console.error('Некорректные данные пользователя')
-    }
-  }
-
+  userData?: UserData;
+  isLoggedIn?: boolean;
+  onLogin?: (email: string, password: string) => void;
+  onRegister?: (registerData: { name: string; email: string; phone: string; password: string }) => void;
+  onLogout?: () => void;
+  onSave?: (data: { name: string; email: string; phone: string }) => void;
+  onEdit?: (isEditing: boolean) => void;
+}> = ({ 
+  onBack, 
+  userData, 
+  isLoggedIn = false, 
+  onLogin, 
+  onRegister, 
+  onLogout, 
+  onSave,
+  onEdit 
+}) => {
   return (
     <div className="profile-page">
       <div className="page-header">
@@ -64,17 +44,20 @@ const ProfilePage: React.FC<{
 
       <div className="profile-page__main">
         <div className="profile-page__content">
-          <Profile 
-            userData={userData}
-            onEdit={handleEdit}
-            onSave={handleSave}
-            isEditing={isEditing}
-          />
-          
+          <div className="profile-container">
+            <Profile
+              userData={userData}
+              isLoggedIn={isLoggedIn}
+              onLogin={onLogin}
+              onRegister={onRegister}
+              onLogout={onLogout}
+              onSave={onSave}
+              onEdit={onEdit}
+            />
+          </div>
         </div>
       </div>
 
-      {/* Используем общий подвал */}
       <footer className="app__footer">
         <div className="app__footer-content">
           <p>&copy; 2025 aliccedress. Все права защищены.</p>
